@@ -1,0 +1,26 @@
+
+
+.App {
+  display: grid;
+  grid-template-rows: 3em auto 3em;
+  height: 100vh;
+  margin: 8px;
+}
+
+header{
+  background-color: #800000;
+  color: #efefef;
+  line-height: 3em;  
+}
+
+main {
+  padding: 1em 0;
+  display: grid;
+  grid-template-columns: 22% auto 22%;
+}
+
+
+
+
+
+
