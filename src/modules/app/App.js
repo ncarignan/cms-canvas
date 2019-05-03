@@ -6,6 +6,7 @@ import Roster from '../roster/roster';
 import Courses from '../courses/courses';
 import Login from '../login/login';
 import CanvasKeyForm from '../canvasKeyForm/canvasKeyForm';
+import RandomizerButtons from '../randomizerButtons/randomizerButtons';
 
 // Lib
 import Course from '../../lib/course';
@@ -29,10 +30,7 @@ function App() {
           <Roster students={students} setStudents={setStudents} />
         </div>
         <div>
-          <div className="pairs-and-students-buttons">
-            <span className="clicker">Pairs</span>
-            <span className="clicker">Next!</span>
-          </div>
+          <RandomizerButtons />
           {!localStorage.getItem('token') && <Login />}
           {!localStorage.getItem('canvas_api_key') && <CanvasKeyForm />}
         </div>
