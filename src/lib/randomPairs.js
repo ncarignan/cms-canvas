@@ -33,7 +33,7 @@ function generateRandomPairs(students) {
   for (let i = 0; i < shuffledStudents.length - 1; i++) {
     const pairs = [];
     let oddOneOut;
-    if (second.length > first.length) {
+    if (students.length % 2) {
       oddOneOut = second.shift();
     }
     for (let j = 0; j < first.length; j++) {
