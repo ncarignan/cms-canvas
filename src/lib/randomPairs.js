@@ -33,7 +33,7 @@ function generateRandomPairs(students) {
   for (let i = 0; i < shuffledStudents.length - 1; i++) {
     const pairs = [];
     let oddOneOut;
-    if (students.length % 2) {
+    if (second.length > first.length) {
       oddOneOut = second.shift();
     }
     for (let j = 0; j < first.length; j++) {
@@ -41,13 +41,15 @@ function generateRandomPairs(students) {
     }
     if (oddOneOut) {
       pairs[pairs.length - 1].push(oddOneOut);
+      second.unshift(oddOneOut);
     }
-    combinations.push(pairs);
     const pivot = first.shift();
     first.unshift(second.shift());
     first.unshift(pivot);
     second.push(first.pop());
+    combinations.push(pairs);
   }
+  console.log(combinations);
   localStorage.setItem('studentCombinations', JSON.stringify(combinations));
 }
 

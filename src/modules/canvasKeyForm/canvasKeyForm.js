@@ -5,7 +5,8 @@ import useForm from '../../hooks/useForm';
 
 const superagent = require('superagent');
 
-const API_URL = 'https://canvas-server.herokuapp.com';
+// const API_URL = 'https://canvas-server.herokuapp.com';
+const API_URL = 'http://localhost:3001';
 
 function CanvasKeyForm() {
   const _uploadKey = async (inputs) => {

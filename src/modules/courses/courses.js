@@ -5,7 +5,8 @@ import './courses.css';
 import Course from '../../lib/course';
 import Student from '../../lib/student';
 
-const API_URL = 'https://canvas-server.herokuapp.com';
+// const API_URL = 'https://canvas-server.herokuapp.com';
+const API_URL = 'http://localhost:3001';
 
 
 function Roster(props) {
