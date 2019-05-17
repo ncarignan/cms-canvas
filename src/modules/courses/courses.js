@@ -23,7 +23,7 @@ function Roster(props) {
       if (course.name === name) {
         course.selected = true;
         Student.get(setStudents, `${API_URL}/students/${course.id}`);
-        localStorage.setItem('studentCombinations', null);
+        localStorage.setItem('studentCombinations', JSON.stringify([]));
       } 
       return course;
     }));
