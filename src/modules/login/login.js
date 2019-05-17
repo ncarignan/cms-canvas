@@ -4,8 +4,8 @@ import './login.css';
 
 import useForm from '../../hooks/useForm';
 
-// const API_URL = 'https://canvas-server.herokuapp.com';
-const API_URL = 'http://localhost:3001';
+const API_URL = 'https://canvas-server.herokuapp.com';
+// const API_URL = 'http://localhost:3001';
 
 function Login() {
   const _login = (inputs) => {
