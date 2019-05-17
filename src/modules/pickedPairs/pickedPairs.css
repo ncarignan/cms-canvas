@@ -1,0 +1,17 @@
+ul.pairs {
+  display: block;
+  font-size: 2em;
+  line-height: 2.1em;
+  list-style-type: none;
+}
+
+.pairs li{
+  text-align: center;
+}
+
+.student,
+.pairs {
+  color: red;
+  font-size: 6em;
+  font-weight: bold;
+}

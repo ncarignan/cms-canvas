@@ -4,19 +4,26 @@ import './App.css';
 // Modules
 import Roster from '../roster/roster';
 import Courses from '../courses/courses';
+import PickedStudent from '../pickedStudent/pickedStudent';
+import PickedPairs from '../pickedPairs/pickedPairs';
 import Login from '../login/login';
+
 import CanvasKeyForm from '../canvasKeyForm/canvasKeyForm';
 import RandomizerButtons from '../randomizerButtons/randomizerButtons';
 
 // Lib
 import Course from '../../lib/course';
+import Student from '../../lib/student';
 
 function App() {
   const [students, setStudents] = useState([]);
   const [courses, setCourses] = useState([]);
+  const [pickedPairs, setPickedPairs] = useState(null);
+  const [pickedStudent, setPickedStudent] = useState(null);
 
   useEffect(() => {
     Course.get(setCourses, 'LS');
+    Student.get(setStudents, 'LS');
   }, []);
 
   return (
@@ -30,9 +37,23 @@ function App() {
           <Roster students={students} setStudents={setStudents} />
         </div>
         <div>
-          <RandomizerButtons />
+          <RandomizerButtons
+            students={students}
+            setStudents={setStudents}
+            setPickedStudent={setPickedStudent} 
+            setPickedPairs={setPickedPairs} 
+          />
           {!localStorage.getItem('token') && <Login />}
           {!localStorage.getItem('canvas_api_key') && <CanvasKeyForm />}
+          {pickedStudent && (
+          <PickedStudent
+            pickedStudent={pickedStudent}
+            setPickedStudent={setPickedStudent} 
+          />
+          )}
+          {pickedPairs && (
+          <PickedPairs pickedPairs={pickedPairs} />
+          )}
         </div>
         <div />
       </main>

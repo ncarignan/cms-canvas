@@ -22,7 +22,7 @@ const _getCoursesFromAPI = (handler, destination) => {
   return superagent.post(destination)
     .send({
       requests: [{
-        target: 'https://canvas.instructure.com/api/v1/courses',
+        target: 'https://canvas.instructure.com/api/v1/users/self/favorites/courses?include[]=term&exclude[]=enrollments',
         queries: [],
       }], 
     })
