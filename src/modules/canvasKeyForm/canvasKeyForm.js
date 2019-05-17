@@ -5,10 +5,12 @@ import useForm from '../../hooks/useForm';
 
 const superagent = require('superagent');
 
+const API_URL = 'https://canvas-server.herokuapp.com';
+
 function CanvasKeyForm() {
   const _uploadKey = async (inputs) => {
     console.log(inputs);
-    await superagent.post('http://localhost:3001/canvas_key')
+    await superagent.post(`${API_URL}/canvas_key`)
       .set('x-access-token', localStorage.getItem('token'))
       .send(inputs);
     // TODO: remove form;

@@ -5,6 +5,8 @@ import './courses.css';
 import Course from '../../lib/course';
 import Student from '../../lib/student';
 
+const API_URL = 'https://canvas-server.herokuapp.com';
+
 
 function Roster(props) {
   const { courses, setCourses, setStudents } = props;
@@ -12,14 +14,14 @@ function Roster(props) {
   const clickOnCourse = (name) => {
     console.log(name);
     if (name === 'get courses') {
-      Course.get(setCourses, 'http://localhost:3001/canvas');
+      Course.get(setCourses, `${API_URL}/canvas`);
     }
     
     setCourses(courses.map((course) => {
       course.selected = false;
       if (course.name === name) {
         course.selected = true;
-        Student.get(setStudents, `http://localhost:3001/students/${course.id}`);
+        Student.get(setStudents, `${API_URL}/students/${course.id}`);
       } 
       return course;
     }));

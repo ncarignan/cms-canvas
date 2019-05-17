@@ -4,9 +4,10 @@ import './login.css';
 
 import useForm from '../../hooks/useForm';
 
+const API_KEY = 'https://canvas-server.herokuapp.com';
 function Login() {
   const _login = (inputs) => {
-    superagent.post('http://localhost:3001/login')
+    superagent.post(`${API_KEY}/login`)
       .send(inputs)
       .then(result => localStorage.setItem('token', result.body.token));
   };
