@@ -7,11 +7,15 @@ import useForm from '../../hooks/useForm';
 const API_URL = 'https://canvas-server.herokuapp.com';
 // const API_URL = 'http://localhost:3001';
 
-function Login() {
+function Login(props) {
+  const { setHasLocalToken } = props;
   const _login = (inputs) => {
     superagent.post(`${API_URL}/login`)
       .send(inputs)
-      .then(result => localStorage.setItem('token', result.body.token));
+      .then((result) => {
+        localStorage.setItem('token', result.body.token);
+        setHasLocalToken(true);
+      });
   };
   const { inputs, handleInputChange, handleSubmit } = useForm(_login);
   return (

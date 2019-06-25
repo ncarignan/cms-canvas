@@ -8,7 +8,9 @@ const superagent = require('superagent');
 const API_URL = 'https://canvas-server.herokuapp.com';
 // const API_URL = 'http://localhost:3001';
 
-function CanvasKeyForm() {
+function CanvasKeyForm(props) {
+  const { setHasLocalKey } = props;
+
   const _uploadKey = async (inputs) => {
     console.log(inputs);
     await superagent.post(`${API_URL}/canvas_key`)
@@ -16,6 +18,7 @@ function CanvasKeyForm() {
       .send(inputs);
     // TODO: remove form;
     localStorage.setItem('canvas_api_key', inputs.canvas_api_key);
+    setHasLocalKey(true);
     return null;
   };
   const { inputs, handleInputChange, handleSubmit } = useForm(_uploadKey);

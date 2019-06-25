@@ -20,10 +20,15 @@ function App() {
   const [courses, setCourses] = useState([]);
   const [pickedPairs, setPickedPairs] = useState(null);
   const [pickedStudent, setPickedStudent] = useState(null);
+  const [hasLocalToken, setHasLocalToken] = useState(false);
+  const [hasLocalKey, setHasLocalKey] = useState(false);
+
 
   useEffect(() => {
     Course.get(setCourses, 'LS');
     Student.get(setStudents, 'LS');
+    if (localStorage.getItem('token')) setHasLocalToken(true);
+    if (localStorage.getItem('canvas_api_key')) setHasLocalKey(true);
   }, []);
 
   return (
@@ -43,8 +48,8 @@ function App() {
             setPickedStudent={setPickedStudent} 
             setPickedPairs={setPickedPairs} 
           />
-          {!localStorage.getItem('token') && <Login />}
-          {!localStorage.getItem('canvas_api_key') && <CanvasKeyForm />}
+          {!hasLocalToken && <Login setHasLocalToken={setHasLocalToken} />}
+          {!hasLocalKey && <CanvasKeyForm setHasLocalKey={setHasLocalKey} />}
           {pickedStudent && (
           <PickedStudent
             pickedStudent={pickedStudent}
@@ -56,6 +61,9 @@ function App() {
           )}
         </div>
         <div />
+        <div>
+          {/* <AvailableActions /> */}
+        </div>
       </main>
       <footer />
     </div>

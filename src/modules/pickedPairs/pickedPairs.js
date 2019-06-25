@@ -1,5 +1,7 @@
 import React from 'react';
+import filterKeys from '../../lib/filterKeys';
 import './pickedPairs.css';
+
 
 function PickedPairs(props) {
   const { pickedPairs } = props;
@@ -21,10 +23,23 @@ function PickedPairs(props) {
   return (
     <ul className="pairs">
       {pickedPairs
-        && pickedPairs.map(pair => (
-          <li key={pair[0].name}>{pair.reduce((a, c) => `${a} ${c.name},`, '').slice(0, -1)}</li>
-        ))}
-      <li key="end" onClick={savePairs} onKeyDown={savePairs} role="button" tabIndex="0">Save pairs</li>
+        && pickedPairs.map((pair) => {
+          console.log(pair.reduce((a, c) => `${a} ${c.name},`, ''));
+          
+          return (
+            <li key={pair[0].name}>{pair.reduce((a, c) => `${a} ${c.name},`, '').slice(0, -1)}</li>
+          );
+        })}
+      <li 
+        key="end" 
+        onClick={savePairs} 
+        onKeyDown={filterKeys(['enter'], savePairs)} 
+        role="button" 
+        tabIndex="0" 
+        className="clicker"
+      >
+        Save pairs
+      </li>
     </ul>
     
   );

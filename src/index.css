@@ -24,4 +24,13 @@ h1 {
   font-size: 2em;
 }
 
+.deck {
+  display: grid;
+  justify-content: space-around;
+  justify-items: center;
+  align-content: space-around;
+  align-items: center;
+
+}
+
 

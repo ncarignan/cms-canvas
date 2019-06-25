@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import filterKeys from '../../lib/filterKeys';
 import './courses.css';
 
 import Course from '../../lib/course';
@@ -32,7 +33,7 @@ function Roster(props) {
       
     <select
       onClick={(e) => { clickOnCourse(e.target.value); }}
-      onKeyDown={(e) => { clickOnCourse(e.target.value); }}
+      onKeyDown={filterKeys(['enter'], (e) => { clickOnCourse(e.target.value); })}
     >
       <option key="get courses">
         get courses

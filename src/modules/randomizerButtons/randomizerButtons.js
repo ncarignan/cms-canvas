@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import filterKeys from '../../lib/filterKeys';
 
 import './randomizerButtons.css';
 
@@ -31,13 +32,13 @@ function RandomizerButtons(props) {
   };
 
   return (
-    <div className="pairs-and-students-buttons">
+    <div className="pairs-and-students-buttons deck">
       <span 
         className="clicker"
         tabIndex="0"
         role="button"
         onClick={() => randomPairs(students, pickPairsCallback)}
-        onKeyDown={() => randomPairs(students, pickPairsCallback)}
+        onKeyDown={filterKeys(['enter'], () => randomPairs(students, pickPairsCallback))}
       >
       Pairs
       </span>
@@ -46,7 +47,8 @@ function RandomizerButtons(props) {
         tabIndex="0"
         role="button"
         onClick={() => randomOne(students, pickStudentCallback)}
-        onKeyDown={() => randomOne(students, pickStudentCallback)}
+        onKeyDown={filterKeys(['enter'], () => randomOne(students, pickStudentCallback))}
+
       >
 Next!
       </span>
